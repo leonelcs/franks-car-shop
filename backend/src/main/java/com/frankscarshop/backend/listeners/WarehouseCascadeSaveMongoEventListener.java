@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;
 import org.springframework.data.mongodb.core.mapping.event.BeforeConvertEvent;
 
-public class CascadeSaveMongoEventListener extends AbstractMongoEventListener<Object> {
+public class WarehouseCascadeSaveMongoEventListener extends AbstractMongoEventListener<Object> {
 
     @Autowired
     VehiclesRepository vehiclesRepository;
@@ -19,8 +19,12 @@ public class CascadeSaveMongoEventListener extends AbstractMongoEventListener<Ob
         //However, I want the embedded documents to have an id, so I'm catching the event and adding ids before the Vehicles are saved with the Warehouse
         Object source = event.getSource();
         if ((source instanceof Warehouse) ) {
-            ((Warehouse) source).getCars().getVehicles().forEach(vehicle -> {
+            Warehouse warehouse = ((Warehouse) source);
+            warehouse.getCars().getVehicles().forEach(vehicle -> {
                 vehicle.setId(new ObjectId().toString());
+                vehicle.setLocation(warehouse.getLocation());
+                vehicle.setLocationName(warehouse.getCars().getLocation());
+                vehicle.setWarehouse(warehouse.getName());
                 vehiclesRepository.save(vehicle);
             });
         }

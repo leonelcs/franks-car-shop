@@ -1,6 +1,10 @@
 package com.frankscarshop.backend.collections;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -8,21 +12,30 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Getter
 @Setter
 @ToString
-@Document
+@AllArgsConstructor
+@Document(collection="vehicles")
 public class Vehicle {
 
     @Id
-    private Double _id;
+    @Field("_id")
+    private String id;
 
     private String make;
 
     private String model;
 
+    private String warehouse;
+
+    private String locationName;
+
+    private Location location;
+
+    @SerializedName(value="year_model")
     @Field("year_model")
     private String yearModel;
 
@@ -31,5 +44,7 @@ public class Vehicle {
     private Boolean licensed;
 
     @Field("date_added")
-    private LocalDate dateAdded;
+    @SerializedName(value="date_added")
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date dateAdded;
 }
