@@ -1,0 +1,13 @@
+body {
+    font-family: Arial;
+    margin: 0;
+  }
+  
+  /* Header/Logo Title */
+  .header {
+    padding: 100px;
+    text-align: center;
+    background-image: "../../images/FrankShopCar.svg";
+    color: white;
+    font-size: 30px;
+  }

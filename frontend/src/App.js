@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import ListCarsComponent from './components/cars/ListCarsComponent'
+// import NavBar from './components/navbar/NavBar'
 import './App.css';
+import Main from './pages/Main';
 
 class App extends Component {
 
@@ -17,10 +18,11 @@ class App extends Component {
       .catch(console.log)
   }
 
+
   render() {
     return (
-      <div className="App">
-        <ListCarsComponent cars={this.state.cars}></ListCarsComponent>
+      <div>
+        <Main/>
       </div>
     );
   }

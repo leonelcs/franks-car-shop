@@ -1,0 +1,33 @@
+.photo {
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+}
+
+.button {
+    padding: 5px;
+    margin: 5px;
+}
+
+.thumbnail {
+    height: 12.5%;
+    width: 12.5%;
+}
+
+.overlay-title {
+    color: darkorange;
+    font-weight: bold;
+    text-align: left;
+}
+
+.overlay-subtitle {
+    color: lightgray;
+    text-align: left;
+}
+
+.overlay-text {
+    color: white;
+    text-align: left;
+    text-decoration: black;
+    text-shadow: black;
+}
