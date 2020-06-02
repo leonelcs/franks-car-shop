@@ -13,7 +13,7 @@ const Navbar = ()=>{
                         <li><Link to="/cart"><i className="material-icons">shopping_cart</i></Link></li>
                     </ul>
                 </div>
-            </nav>  
+            </nav>
     )
 }
 

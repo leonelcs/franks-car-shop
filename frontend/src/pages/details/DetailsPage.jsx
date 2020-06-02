@@ -1,33 +1,37 @@
 import React, { Component } from 'react';
-import ShopHeader from '../../components/header/ShopHeader';
 import CarDetails from '../../components/cardetails/CarDetails';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 class DetailsPage extends Component {
 
+    fetchCarBySlug = (slug) => {
+        const cars = this.props.cars;
+        return cars.filter((c) => c.slug === slug);
+    }
 
     render = () => {
-        const car  = {
-            id: "5ed649fd96119325cc565fc1",
-            slug: "Volvo-850-1995-65fc",
-            make: "Volvo",
-            model: "850",
-            warehouse: "Warehouse C",
-            locationName: "Suid wing",
-            location: {
-                latitude: 39.12788,
-                longitude: -2.71398
-            },
-            yearModel: "1995",
-            price: 25762.08,
-            licensed: true,
-            dateAdded: "2017-10-02"
-            };
-        return (
+
+        const carSet = this.fetchCarBySlug(this.props.match.params.slug)
+        return carSet.length > 0 ? 
+        (
             <div>
-                <ShopHeader title="Frank's Car Shop" subtitle="Here you find your best deal" />
                 <div className="Main">
-                    <CarDetails car={car} />
+                    <CarDetails car={carSet[0]} />
                 </div>
+                <div>
+                    <Link className="button" to="/"><Button className="button" variant="secondary">Back to Main Page</Button></Link>
+                </div>
+            </div>
+            
+        ) : (
+            <div>
+            <div>
+                <h1>Car not found</h1>
+            </div>
+            <div>
+                <Link className="button" to="/"><Button className="button" variant="secondary">Back to Main Page</Button></Link>
+            </div>
             </div>
         );
     }

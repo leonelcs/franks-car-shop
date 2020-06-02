@@ -14,7 +14,7 @@ import { applyMiddleware } from 'redux';
 
 const middlewares = [thunk];
 
-const store = createStore(carsReducer, applyMiddleware(...middlewares));
+const store = createStore(carsReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(...middlewares));
 
 ReactDOM.render(
   <Provider store={store} >

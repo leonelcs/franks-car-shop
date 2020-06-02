@@ -30,8 +30,7 @@ function DetailsButton(props) {
     const isLicensed = selectedCar.licensed;
 
     if (isLicensed) {
-        // return ( <Link className="button" to={{pathname: `car/${selectedCar.slug}`, query: { id: selectedCar.id }}}><Button className="button" variant="secondary">See More</Button></Link> );
-        return ( <Link className="button" to="/car"><Button className="button" variant="secondary">See More</Button></Link> );
+        return ( <Link className="button" to={`/car/${selectedCar.slug}`}><Button className="button" variant="secondary">See More</Button></Link> );
     } else {
         return ( <Button className="button" variant="outline-secondary" disabled>Not Available</Button> );
     }

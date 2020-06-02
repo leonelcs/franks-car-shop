@@ -2,7 +2,7 @@ import React from 'react';
 import './ShopHeader.css';
 import { ReactComponent as Logo } from '../../images/FrankShopCar.svg';
 
-function ShopHeader(props) {
+function ShopHeader() {
 
     return (
         <div className="header">
