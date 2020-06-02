@@ -21,7 +21,13 @@ public class WarehouseCascadeSaveMongoEventListener extends AbstractMongoEventLi
         if ((source instanceof Warehouse) ) {
             Warehouse warehouse = ((Warehouse) source);
             warehouse.getCars().getVehicles().forEach(vehicle -> {
-                vehicle.setId(new ObjectId().toString());
+                String id = new ObjectId().toString();
+                vehicle.setId(id);
+                String fiveLast = id.substring(id.length()-5, id.length());
+                String make = vehicle.getMake().replace(' ', '-');
+                String model = vehicle.getModel().replace(' ', '-');
+                String slug = String.format("%s-%s-%s-%s",make,model,vehicle.getYearModel(),fiveLast);
+                vehicle.setSlug(slug);
                 vehicle.setLocation(warehouse.getLocation());
                 vehicle.setLocationName(warehouse.getCars().getLocation());
                 vehicle.setWarehouse(warehouse.getName());

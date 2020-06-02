@@ -1,31 +1,17 @@
-import React, { Component } from 'react';
-// import NavBar from './components/navbar/NavBar'
-import './App.css';
-import Main from './pages/Main';
+import AppComponent from './AppComponent';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import fetchCars from './redux/fetchCars';
+import { getCars } from './redux/carsReducer';
 
-class App extends Component {
+const mapStateToProps = (state) => ({
+    cars: getCars(state),
+})
 
-  state = {
-    cars: []
-  }
-
-  componentDidMount() {
-    fetch('http://localhost:8080/cars')
-      .then(res => res.json())
-      .then((data) => {
-        this.setState({ cars: data })
-      })
-      .catch(console.log)
-  }
-
-
-  render() {
-    return (
-      <div>
-        <Main/>
-      </div>
-    );
-  }
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({fetchCars: fetchCars}, dispatch);
 }
+
+const App = connect(mapStateToProps, mapDispatchToProps)(AppComponent);
 
 export default App;

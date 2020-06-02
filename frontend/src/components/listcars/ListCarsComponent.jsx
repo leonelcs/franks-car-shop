@@ -10,11 +10,11 @@ class ListCarsComponent extends Component {
         return (
             <div>
               <div>
-                <center><h1>Cars List</h1></center>
+                <center><h4>Cars List</h4></center>
               </div>
               <div className="grid-container">
               {cars.map((car) => (
-                <div className="grid-item">
+                <div className="grid-item" key={car.slug}>
                   <ListItemCar car={car} ></ListItemCar>
                 </div>
               ))}

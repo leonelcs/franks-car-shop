@@ -1,19 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
+import { BrowserRouter as Router} from 'react-router-dom'; 
 import './index.css';
-import Main from './pages/Main';
-import DetailsPage from './components/detailspage/DetailsPage';
+import App from './App.js';
+import {createStore} from 'redux';
+import { carsReducer } from './redux/carsReducer';
+import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
+
 
 import * as serviceWorker from './serviceWorker';
+import { applyMiddleware } from 'redux';
+
+const middlewares = [thunk];
+
+const store = createStore(carsReducer, applyMiddleware(...middlewares));
 
 ReactDOM.render(
-  <Router>
-    <Switch>
-      <Route exact path="/" component={Main} />
-      <Route exact path="/car" component={DetailsPage} />
-    </Switch>
-  </Router>,
+  <Provider store={store} >
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 

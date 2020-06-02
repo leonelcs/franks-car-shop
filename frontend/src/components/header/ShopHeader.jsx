@@ -5,7 +5,7 @@ import { ReactComponent as Logo } from '../../images/FrankShopCar.svg';
 function ShopHeader(props) {
 
     return (
-        <div class="header">
+        <div className="header">
             <Logo width="35%" height="35%"></Logo>
         </div>
     );

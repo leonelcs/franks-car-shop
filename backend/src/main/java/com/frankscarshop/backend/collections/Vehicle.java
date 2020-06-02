@@ -25,6 +25,8 @@ public class Vehicle {
     @Field("_id")
     private String id;
 
+    private String slug;
+
     private String make;
 
     private String model;
