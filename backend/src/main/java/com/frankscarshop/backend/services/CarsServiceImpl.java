@@ -23,9 +23,10 @@ public class CarsServiceImpl implements CarsService {
     private MongoTemplate template;
 
     @Override
-    public List<Vehicle> findAllCarsSortedByDate() {
+    public List<Vehicle> findAllCarsSortedByField(Sort.Direction direction, String field) {
+
         Query query = new Query();
-        query.with(Sort.by(Sort.Direction.ASC, "dateAdded"));
+        query.with(Sort.by(direction, field));
         return template.find(query, Vehicle.class);
     }
 

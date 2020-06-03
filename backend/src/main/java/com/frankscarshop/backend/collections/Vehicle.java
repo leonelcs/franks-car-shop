@@ -12,12 +12,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
 @Document(collection="vehicles")
 public class Vehicle {
 
@@ -49,4 +50,14 @@ public class Vehicle {
     @SerializedName(value="date_added")
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date dateAdded;
+
+    public static List<String> getAllSortableFields() {
+        List<String> output = new ArrayList<>();
+        output.add("warehouse");
+        output.add("locationName");
+        output.add("yearModel");
+        output.add("price");
+        output.add("dateAdded");
+        return output;
+    }
 }

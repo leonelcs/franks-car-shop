@@ -11,7 +11,6 @@ class CarDetails extends Component {
                 <p>{car.model}</p>
                 <p>{car.warehouse}</p>
                 <p>{car.locationName}</p>
-                <p>{car.id}</p>
                 <p>{car.yearModel}</p>
                 <p>{car.price}</p>
                 <p>{car.licensed}</p>

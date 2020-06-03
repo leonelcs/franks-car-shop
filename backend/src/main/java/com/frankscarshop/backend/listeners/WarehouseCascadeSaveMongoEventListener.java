@@ -2,6 +2,7 @@ package com.frankscarshop.backend.listeners;
 
 import com.frankscarshop.backend.collections.Warehouse;
 import com.frankscarshop.backend.repository.VehiclesRepository;
+import com.frankscarshop.backend.utils.AddFeaturesToVehicleModel;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;
@@ -21,16 +22,7 @@ public class WarehouseCascadeSaveMongoEventListener extends AbstractMongoEventLi
         if ((source instanceof Warehouse) ) {
             Warehouse warehouse = ((Warehouse) source);
             warehouse.getCars().getVehicles().forEach(vehicle -> {
-                String id = new ObjectId().toString();
-                vehicle.setId(id);
-                String fiveLast = id.substring(id.length()-5, id.length());
-                String make = vehicle.getMake().replace(' ', '-');
-                String model = vehicle.getModel().replace(' ', '-');
-                String slug = String.format("%s-%s-%s-%s",make,model,vehicle.getYearModel(),fiveLast);
-                vehicle.setSlug(slug);
-                vehicle.setLocation(warehouse.getLocation());
-                vehicle.setLocationName(warehouse.getCars().getLocation());
-                vehicle.setWarehouse(warehouse.getName());
+                AddFeaturesToVehicleModel.decorateVehicle(vehicle, warehouse);
                 vehiclesRepository.save(vehicle);
             });
         }
