@@ -4,7 +4,6 @@ import { addCarToCart } from '../../redux/actions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import './DetailsPage.css';
-import { getCars } from '../../redux/carsReducer';
 
 
 class DetailsPage extends Component {

@@ -3,7 +3,7 @@ import {FETCH_CARS_PENDING, FETCH_CARS_SUCCESS, FETCH_CARS_ERROR, ADD_CAR_TO_CAR
 const initialState = {
     cars: [],
     addedItems: [],
-    totalPrice: []
+    totalPrice: 0
 }
 
 export function carsReducer(state=initialState, action) {
@@ -25,16 +25,31 @@ export function carsReducer(state=initialState, action) {
                 pending: false,
                 error: action.error
             }
-        case ADD_CAR_TO_CART: 
-            return {
-                ...state,
-                addedItems: [...state.addedItems, action.car],
+        case ADD_CAR_TO_CART:
+            let existed_item = state.addedItems.find(item => action.car.id === item.id)
+            if (!existed_item) {
+                let newPrice = state.totalPrice + action.car.price;
+                return {
+                    ...state,
+                    addedItems: [...state.addedItems, action.car],
+                    totalPrice: newPrice
+                }
+            } else {
+                return {
+                    ...state
+                }
             }
+
         case REMOVE_CAR_FROM_CART:
+            let itemToRemove= state.addedItems.find(item=> action.id === item.id)
+            let new_items = state.addedItems.filter(item=> action.car.id !== item.id)
+            let newTotal = state.totalPrice - action.car.price;
+            console.log(itemToRemove);
             return {
                 ...state,
                 pending: false,
-                addedItems: [...state.addedItems] //it is not removing yet
+                addedItems: [...new_items],
+                totalPrice: newTotal
             }
         default:
             return state;

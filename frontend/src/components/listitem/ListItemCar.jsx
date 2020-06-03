@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-// import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import Price from '../price/Price';
 
@@ -8,6 +6,7 @@ class ListItemCar extends Component {
 
     render = () => {
         const car = this.props.car;
+        console.log(this.props.addedItems);
         return (
 
             <div className="card" key={car.id}>

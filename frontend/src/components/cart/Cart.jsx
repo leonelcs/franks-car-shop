@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Price from '../price/Price';
+import {removeCarFromCart} from '../../redux/actions';
 import './Cart.css';
+
 
 
 class Cart extends Component{
 
+    handleClick = (car) => {
+        this.props.removeCarFromCart(car);
+    }
+
     render(){
-        console.log(this.props.addedItems);
+        let totalPrice = this.props.totalPrice;
+        console.log(totalPrice);
 
         let addedItems = this.props.addedItems.length ?
             (  
@@ -21,8 +27,8 @@ class Cart extends Component{
                                     </div>
                                     <div className="item-desc">
                                         <span className="title">{car.make} - {car.model} - {car.yearModel}</span>
-                                        <p><b>Price: <Price price={car.price} /></b></p> 
-                                        <button className="waves-effect waves-light btn pink remove">Remove</button>
+                                        <p><b>Price: <Price price={car.price} /></b></p>
+                                        <button className="waves-effect waves-light btn pink remove" onClick={() => this.handleClick(car)} >Remove</button>
                                     </div>
                                     
                                </li>
@@ -39,6 +45,7 @@ class Cart extends Component{
                     <h5>You have ordered:</h5>
                     <ul className="collection">
                         {addedItems}
+                        <li className="collection-item"><b>Total: <Price price={totalPrice} /></b></li>
                     </ul>
                 </div>  
             </div>
@@ -48,8 +55,15 @@ class Cart extends Component{
 
 const mapStateToProps = (state)=>{
     return{
-        items: state.addedItems
+        items: state.addedItems,
+        totalPrice: state.totalPrice
     }
 }
 
-export default connect(mapStateToProps)(Cart)
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        removeCarFromCart: (id)=>{dispatch(removeCarFromCart(id))},
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

@@ -13,14 +13,15 @@ class CarDetails extends Component {
                         <li>Model: {car.model}</li>
                         <li>Year: {car.yearModel}</li>
                         <li>Price: <Price price={car.price} /></li>
-                            
-
                     </ul>
                 </div>
 
                 <div className="col-6 col-s-9">
                     <h1>The Car</h1>
                     <p>This {car.make} {car.model} - {car.yearModel} is unique deal, almost new, this is the best purchase you can do today</p>
+                    <div className="container">
+                        <img src="images/default-pict.png" alt="images/default-pict.png" />
+                    </div>
                 </div>
 
                 <div className="col-3 col-s-12">
