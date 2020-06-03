@@ -6,6 +6,8 @@
   
 .grid-item {
     border: 1px solid rgba(0, 0, 0, 0.8);
+    min-width: 497px;
+    min-height: 190px;
     padding: 5px;
     font-size: 30px;
     text-align: right;

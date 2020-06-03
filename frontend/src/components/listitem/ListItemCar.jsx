@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import Price from '../price/Price';
 import './ListItemCar.css';
 
 class ListItemCar extends Component {
@@ -34,14 +35,6 @@ function DetailsButton(props) {
     } else {
         return ( <Button className="button" variant="outline-secondary" disabled>Not Available</Button> );
     }
-}
-
-function Price(props) {
-    const price = props.price;
-    const formatedPrice = '€ ' + price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-    return (
-        <span>{formatedPrice}</span>
-    );
 }
 
 export default ListItemCar;
