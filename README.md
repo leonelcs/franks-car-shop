@@ -23,6 +23,19 @@ It might required change the permissions on your folder so you can quickly chang
 chmod 555 ./backend-docker-gen.sh
 ```
 
+then you go for docker folder and run:
+
+```
+cd docker
+docker-compose up
+```
+
+This will make available a mongodb instance on the default port and a backend application on the port 8080
+
+you can access a short the api documentation at:
+
+http://localhost:8080/swagger-ui.html
+
 #### running the frontend
 
 you can go directly to the frontend folder and run
@@ -32,3 +45,11 @@ cd frontend
 npm install
 yarn start
 ```
+
+#### how to open the application?
+
+You can access the frontend in:
+
+http://localhost:3000/
+
+and the backend 
