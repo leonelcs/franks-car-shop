@@ -1,27 +1,28 @@
 import React, {Component} from 'react';
-import Card from 'react-bootstrap/Card';
+// import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import Price from '../price/Price';
-import './ListItemCar.css';
 
 class ListItemCar extends Component {
 
     render = () => {
         const car = this.props.car;
         return (
-                <div>
-                    <Card className="bg-dark text-white">
-                    <Card.Img className="photo" src="images/default-pict.png" />
-                    <Card.ImgOverlay>
-                        <Card.Title className="overlay-title" >{car.make} - {car.model} - {car.yearModel}</Card.Title>
-                        <Card.Subtitle className="overlay-subtitle" >Since {car.dateAdded}</Card.Subtitle>
-                        <Card.Text className="overlay-text" ><Price price={car.price} /></Card.Text>
-                    </Card.ImgOverlay>
-                    </Card>
-                    <DetailsButton car={car} ></DetailsButton>
-                </div>
-        );
+
+            <div className="card" key={car.id}>
+                    <div className="card-image">
+                        <img src="images/default-pict.png" alt="images/default-pict.png" />
+                        <span className="card-title">{car.make} - {car.model} - {car.yearModel}</span>
+                        <DetailsButton car={car} ></DetailsButton>
+                    </div>
+
+                    <div className="card-content">
+                        <p>Since: {car.dateAdded}</p>
+                        <p><b>Price: <Price price={car.price} /></b></p>
+                    </div>
+            </div>
+        );  
     }
 
 }
@@ -31,9 +32,10 @@ function DetailsButton(props) {
     const isLicensed = selectedCar.licensed;
 
     if (isLicensed) {
-        return ( <Link className="button" to={`/car/${selectedCar.slug}`}><Button className="button" variant="secondary">See More</Button></Link> );
+        // return ( <Link className="button" to={`/car/${selectedCar.slug}`}><Button className="button" variant="secondary">See More</Button></Link> );
+        return ( <Link className="button" to={`/car/${selectedCar.slug}`}><span to="/" className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">details</i></span></Link> );
     } else {
-        return ( <Button className="button" variant="outline-secondary" disabled>Not Available</Button> );
+        return ( <span to="/" className="btn-floating halfway-fab waves-effect waves-light grey"><i className="material-icons">lock</i></span> );
     }
 }
 

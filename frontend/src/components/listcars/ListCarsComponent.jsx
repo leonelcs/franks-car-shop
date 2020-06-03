@@ -8,16 +8,14 @@ class ListCarsComponent extends Component {
     render = () => {
         const cars = this.props.cars;
         return (
-            <div>
-              <div>
-                <center><h4>Cars List</h4></center>
-              </div>
-              <div className="grid-container">
-              {cars.map((car) => (
-                <div className="grid-item" key={car.slug}>
-                  <ListItemCar car={car} ></ListItemCar>
-                </div>
-              ))}
+          <div className="container">
+            <h3 className="center">Our cars</h3>
+              <div className="box">
+                {cars.map((car) => (
+                  <div className="grid-item" key={car.slug}>
+                    <ListItemCar car={car} ></ListItemCar>
+                  </div>
+                ))}
               </div>
             </div>
           )
