@@ -56,6 +56,12 @@ cd frontend
 npm install
 yarn start
 ```
+or
+```
+cd frontend
+npm install
+npm start
+```
 
 You can also run the tests using:
 
@@ -69,4 +75,7 @@ You can access the frontend in:
 
 http://localhost:3000/
 
-and the backend 
+and the backend in:
+
+http://localhost:8080
+
