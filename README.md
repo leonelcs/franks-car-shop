@@ -6,8 +6,9 @@ This is the challenge solution developed by myself for the challenge below:
 
 #### This is not the final version
 
-Before start, have in mind there is more to come.
+It is almost there, I have made some tweaks to make the visual and the features more nice.
 
+In this moment we have all the 3 phases done, there is a debt list that I will comment on the presentation.
 
 Right now the app is dockerized only for backend and mongodb
 
@@ -36,6 +37,14 @@ you can access a short the api documentation at:
 
 http://localhost:8080/swagger-ui.html
 
+you can also run the tests in the backend by using
+
+```
+./run-tests-backend.sh
+```
+
+That will start a mongo container to allow java run the unit tests
+
 #### running the frontend
 
 you can go directly to the frontend folder and run
@@ -44,6 +53,12 @@ you can go directly to the frontend folder and run
 cd frontend
 npm install
 yarn start
+```
+
+You can also run the tests using:
+
+```
+npm test
 ```
 
 #### how to open the application?
