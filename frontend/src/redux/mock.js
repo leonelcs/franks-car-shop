@@ -32,4 +32,21 @@ const mock = [
     dateAdded: "2017-10-14"
     }]
 
+    export const car = {
+        id: "5ed649fd96119325cc565fc1",
+        slug: "Volvo-850-1995-65fc",
+        make: "Volvo",
+        model: "850",
+        warehouse: "Warehouse C",
+        locationName: "Suid wing",
+        location: {
+        latitude: 39.12788,
+        longitude: -2.71398
+        },
+        yearModel: "1995",
+        price: 25762.08,
+        licensed: true,
+        dateAdded: "2017-10-02"
+        }
+
 export default mock;
