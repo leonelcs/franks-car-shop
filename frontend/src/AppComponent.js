@@ -37,6 +37,14 @@ class AppComponent extends Component {
           <Route exact path="/car/:slug" render={(params) => (<DetailsPage {...params} {...this.props} />)} />
           <Route exact path="/shopcart" render={(params) => (<ShopCartPage {...params} {...this.props} />)} />
         </Switch>
+        <div className="page-footer">
+          <div className="container" >
+              <div className="divider"></div>
+              <div className="row">
+                  <span>Our cars has been tested and holds a valid APK</span>
+              </div>
+          </div>
+        </div>
       </div>
     );
   }

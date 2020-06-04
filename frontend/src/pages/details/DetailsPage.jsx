@@ -38,14 +38,14 @@ class DetailsPage extends Component {
                         <Link to="/"><span className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">arrow_back</i></span></Link>
                     </div>
                 </div>
-                <div className="page-footer">
+                {/* <div className="page-footer">
                     <div className="container" >
                         <div className="divider"></div>
                         <div className="row">
                             <span>Our cars has been tested and holds a valid APK</span>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
             
         ) : (
