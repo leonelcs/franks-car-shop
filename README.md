@@ -4,7 +4,9 @@ This is the challenge solution developed by myself for the challenge below:
 
 [The challenge](coding-challenge.md)
 
-#### This is not the final version
+#### There is a lot to do to make it better
+
+[Technical Debt](tech-debt.md)
 
 It is almost there, I have made some tweaks to make the visual and the features more nice.
 
