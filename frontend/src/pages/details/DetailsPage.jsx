@@ -24,15 +24,26 @@ class DetailsPage extends Component {
         return carSet.length > 0 ? 
         (
             <div>
-                <div className="Main">
-                    <CarDetails car={carSet[0]} />
-                </div>
                 <div className="container">
+                    <h3 className="center">{carSet[0].make} - {carSet[0].model} - {carSet[0].yearModel}</h3>
+                        <div className="box">
+                            <CarDetails car={carSet[0]} />
+                        </div>
+                </div>
+                <div className="container valign-wrapper">
                     <div className="col" >
-                    <span className="btn-floating halfway-fab waves-effect waves-light orange left" onClick={this.handleClick} ><i className="material-icons" >add</i></span>
+                    <span className="btn-floating halfway-fab waves-effect waves-light red left" onClick={this.handleClick} ><i className="material-icons" >add</i></span>
                     </div>
                     <div className="col">
-                        <Link to="/"><span className="btn-floating halfway-fab waves-effect waves-light orange"><i className="material-icons">arrow_back</i></span></Link>
+                        <Link to="/"><span className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">arrow_back</i></span></Link>
+                    </div>
+                </div>
+                <div className="page-footer">
+                    <div className="container" >
+                        <div className="divider"></div>
+                        <div className="row">
+                            <span>Our cars has been tested and holds a valid APK</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -43,10 +54,17 @@ class DetailsPage extends Component {
                 <h1>Car not found</h1>
             </div>
             <div>
-                
-                <div className="container">
+                <div className="container valign-wrapper">
                     <div className="col" >
-                        <Link className="btn-floating pulse right" to="/"><span className="btn-floating halfway-fab waves-effect waves-light orange"><i className="material-icons">arrow_back</i></span></Link>
+                        <Link to="/"><span className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">arrow_back</i></span></Link>
+                    </div>
+                </div>
+                <div className="page-footer">
+                    <div className="container" >
+                        <div className="divider"></div>
+                        <div className="row">
+                            <span>Our cars has been tested and holds a valid APK</span>
+                        </div>
                     </div>
                 </div>
             </div>
